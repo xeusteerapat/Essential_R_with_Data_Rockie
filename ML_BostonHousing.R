@@ -46,7 +46,7 @@ ctrl <- trainControl(method = "cv",
                      verboseIter = TRUE)
 
 # KNN Training model
-knn_model <- train(medv ~ rm + crim + tax + indus, 
+knn_model <- train(medv ~ ., 
                    data = train_data, 
                    method = "knn",
                    tuneGrid = grid_search,
@@ -58,5 +58,19 @@ predict_price <- predict(knn_model, newdata = test_data)
 rmse <- sqrt(mean((predict_price - test_data$medv) ** 2))
 rmse
 
+# Linear Regression
+set.seed(99)
+regression_model <- train(medv ~ .,
+                          data = train_data,
+                          method = "lm")
+  
+# test regression prediction
+lm_predict_price <- predict(regression_model, newdata = test_data)
 
+# RMSE Linear Regression
+RMSE(pred = lm_predict_price, obs = test_data$medv)  
 
+#
+regression_model$finalModel
+
+rm(lm_price_predict)
