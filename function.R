@@ -1,3 +1,4 @@
+# function in R, execute line by line from top to bottom
 my_double <- function(x) {
   x * 2
 }
