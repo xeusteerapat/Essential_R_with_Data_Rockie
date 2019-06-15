@@ -32,3 +32,17 @@ roll_dice <- function() {
   x + y
 }
 roll_dice()
+
+# or you can write by following below
+alt_roll_dices <- function() {
+  score <- sample(1:6, size = 2, replace = TRUE)
+  sum(score)
+}
+
+alt_roll_dices()
+
+# n is qty_dice
+alt_roll_dices_by_qty <- function(n) {
+  score <- sample(1:6, size = n, replace = TRUE)
+  sum(score)
+}
