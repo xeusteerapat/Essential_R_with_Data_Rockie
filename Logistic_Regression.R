@@ -28,4 +28,13 @@ predict_value <- predict(logistic_model,
                          newdata = test_data)
 
 # accuracy
-mean(predict_value == test_data$diabetes)
+accuracy <- mean(predict_value == test_data$diabetes)
+accuracy
+
+# confusion matrix
+table(predict_value, test_data$diabetes, dnn = c("Predict", "Actual"))
+
+confusionMatrix(data = predict_value,
+                reference = test_data$diabetes,
+                positive = "pos",
+                mode = "everything")
